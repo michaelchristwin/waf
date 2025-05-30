@@ -1,8 +1,8 @@
-import Meters from "../../public/nft.png";
-import Hardware from "../../public/m3ter.png";
-import Payment from "../../public/payment.png";
+import Meters from "/nft.png";
+import Hardware from "/m3ter.png";
+import Payment from "/payment.png";
 import useEmblaCarousel from "embla-carousel-react";
-import Onchain from "../../public/onchain.jpeg";
+import Onchain from "/onchain.jpeg";
 import { Card, CardContent } from "@/components/ui/card";
 import React, { useCallback, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
