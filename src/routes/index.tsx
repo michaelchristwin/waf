@@ -40,15 +40,6 @@ export const Route = createFileRoute("/")({
       amount: search.amount ? (search.amount as string) : undefined,
     };
   },
-  head: () => ({
-    meta: [
-      {
-        name: "fc:frame",
-        content:
-          '{"version":"next","imageUrl":"https://watt-a-frame.vercel.app/watt-a-frame.webp","button":{"title":"Launch Frame","action":{"type":"launch_frame","name":"Watt-A-Frame","url": "https://watt-a-frame.vercel.app","splashImageUrl":"https://watt-a-frame.vercel.app/lightbulb.png","splashBackgroundColor":"#f7f7f7"}}}',
-      },
-    ],
-  }),
 });
 
 function Index() {
