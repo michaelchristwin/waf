@@ -27,21 +27,6 @@ import { useAccount, useConnect } from "wagmi";
 const ENERGY_PRICE_PER_KWH = 0.06;
 const PRESET_AMOUNTS = [1, 2, 5, 10, 20, 50, 100];
 
-const frame = {
-  version: "next",
-  imageUrl: `https://watt-a-frame.vercel.app/watt-a-frame.webp`,
-  button: {
-    title: "Launch Frame",
-    action: {
-      type: "launch_frame",
-      name: "Watt-A-Frame",
-      url: "https://watt-a-frame.vercel.app",
-      splashImageUrl: `https://watt-a-frame.vercel.app/lightbulb.png`,
-      splashBackgroundColor: "#f7f7f7",
-    },
-  },
-};
-
 type IndexSearchParams = {
   id?: string;
   amount?: string;
@@ -183,7 +168,10 @@ function Index() {
 
   return (
     <div className="h-[calc(91vh-70px)] p-4 mt-[100px]">
-      <meta name="fc:frame" content={`${frame}`} />
+      <meta
+        name="fc:frame"
+        content='{"version":"next","imageUrl":"https://watt-a-frame.vercel.app/watt-a-frame.webp","button":{"title":"Launch Frame","action":{"type":"launch_frame","name":"Watt-A-Frame","url": "https://watt-a-frame.vercel.app","splashImageUrl":"https://watt-a-frame.vercel.app/lightbulb.png","splashBackgroundColor":"#f7f7f7"}}}'
+      />
       {/* Background decoration */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute top-20 left-20 w-64 h-64 rounded-full blur-3xl opacity-40" />
