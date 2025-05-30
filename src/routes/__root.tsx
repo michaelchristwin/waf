@@ -6,6 +6,7 @@ import { config } from "@/config/wagmiConfig";
 import "@/styles.css";
 import { AppContextProvider } from "@/store/app.store";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/footer";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ export const Route = createRootRoute({
           <QueryClientProvider client={queryClient}>
             <Navbar />
             <Outlet />
+            <Footer />
           </QueryClientProvider>
         </WagmiProvider>
       </AppContextProvider>

@@ -23,6 +23,7 @@ import { M3terHead, m3terAlias } from "m3ters";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAppContext } from "@/store/app.store";
 import { useAccount, useConnect } from "wagmi";
+import EmblaSlideshow from "@/components/emblaSlideshow";
 
 const ENERGY_PRICE_PER_KWH = 0.06;
 const PRESET_AMOUNTS = [1, 2, 5, 10, 20, 50, 100];
@@ -44,15 +45,15 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const { id, amount } = Route.useSearch();
-  const [customAmount, setCustomAmount] = useState(amount || "");
+  const [customAmount, setCustomAmount] = useState("");
   const [selectedAmounts, setSelectedAmounts] = useState<number[]>([]);
   const { data: hash, sendTransaction } = useSendTransaction();
 
   const { isConnected } = useAccount();
   const { connect, connectors } = useConnect();
+
   const {
     setAvatarTransitioned,
-
     tokenId,
     setTokenId,
     setStep,
@@ -63,7 +64,8 @@ function Index() {
 
   useEffect(() => {
     if (id) setTokenId(id);
-  }, [id, setTokenId]);
+    if (amount) setCustomAmount(amount);
+  }, [id, setTokenId, setCustomAmount, amount]);
 
   const lastTokenId = useSyncExternalStore(
     (callback) => {
@@ -116,10 +118,8 @@ function Index() {
   };
 
   useEffect(() => {
-    if (selectedAmounts.length > 1) {
-      const b = selectedAmounts.reduce((sum, amount) => sum + amount, 0);
-      setCustomAmount(String(b));
-    }
+    const b = selectedAmounts.reduce((sum, amount) => sum + amount, 0);
+    setCustomAmount(String(b));
   }, [selectedAmounts]);
 
   const handleAmountToggle = (amount: number) => {
@@ -311,9 +311,9 @@ function Index() {
           </button>
 
           {/* Swiper Component */}
-          {/* <div className="w-full h-full max-w-5xl max-h-screen p-4">
+          <div className="w-full h-full max-w-5xl max-h-screen p-4">
             <EmblaSlideshow />
-          </div> */}
+          </div>
         </div>
       )}
     </div>
